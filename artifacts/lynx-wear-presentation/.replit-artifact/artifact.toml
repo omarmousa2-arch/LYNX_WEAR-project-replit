@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/lynx-wear-presentation/"
+title = "Lynx Wear | عرض المشروع"
+description = "عرض تقديمي عربي من 12 شريحة يشرح فكرة متجر Lynx Wear وخصائصه وتقنياته وخطواته القادمة."
+version = "1.0.0"
+id = "artifacts/lynx-wear-presentation"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/lynx-wear-presentation/" ]
+localPort = 26194
+
+[services.development]
+run = "pnpm --filter @workspace/lynx-wear-presentation run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/lynx-wear-presentation", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/lynx-wear-presentation/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26194"
+BASE_PATH = "/lynx-wear-presentation/"

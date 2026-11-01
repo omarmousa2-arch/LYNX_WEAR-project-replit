@@ -1,0 +1,663 @@
+@layer theme, base, clerk, components, utilities;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import 'tailwindcss';
+@import '@clerk/themes/shadcn.css';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 41 29% 94%;
+
+  --foreground: 18 22% 13%;
+
+  --border: 38 18% 82%;
+
+  --card: 40 32% 97%;
+
+  --card-foreground: 18 22% 13%;
+
+  --card-border: 38 18% 82%;
+
+  --sidebar: 41 29% 94%;
+
+  --sidebar-foreground: 18 22% 13%;
+
+  --sidebar-border: 38 18% 82%;
+
+  --sidebar-primary: 12 70% 45%;
+
+  --sidebar-primary-foreground: 41 29% 94%;
+
+  --sidebar-accent: 35 34% 87%;
+
+  --sidebar-accent-foreground: 18 22% 13%;
+
+  --sidebar-ring: 12 70% 45%;
+
+  --popover: 40 32% 97%;
+
+  --popover-foreground: 18 22% 13%;
+
+  --popover-border: 38 18% 82%;
+
+  --primary: 12 70% 45%;
+
+  --primary-foreground: 41 29% 94%;
+
+  --secondary: 35 34% 87%;
+
+  --secondary-foreground: 18 22% 13%;
+
+  --muted: 37 16% 87%;
+
+  --muted-foreground: 20 10% 42%;
+
+  --accent: 12 70% 45%;
+
+  --accent-foreground: 41 29% 94%;
+
+  --destructive: 0 66% 45%;
+
+  --destructive-foreground: 0 0% 98%;
+
+  --input: 38 18% 82%;
+  --ring: 12 70% 45%;
+  --chart-1: 12 70% 45%;
+  --chart-2: 83 25% 42%;
+  --chart-3: 35 67% 57%;
+  --chart-4: 18 22% 13%;
+  --chart-5: 40 32% 70%;
+
+  --app-font-sans: 'DM Sans', 'IBM Plex Sans Arabic', sans-serif;
+  --app-font-serif: 'IBM Plex Sans Arabic', sans-serif;
+  --app-font-mono: 'Space Mono', monospace;
+  --radius: 0.5rem; /* 8px */
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 18 22% 13%;
+
+  --foreground: 41 29% 94%;
+
+  --border: 18 10% 30%;
+
+  --card: 18 18% 17%;
+
+  --card-foreground: 41 29% 94%;
+
+  --card-border: 18 10% 30%;
+
+  --sidebar: 18 22% 13%;
+
+  --sidebar-foreground: 41 29% 94%;
+
+  --sidebar-border: 18 10% 30%;
+
+  --sidebar-primary: 12 70% 55%;
+
+  --sidebar-primary-foreground: 18 22% 13%;
+
+  --sidebar-accent: 18 18% 23%;
+
+  --sidebar-accent-foreground: 41 29% 94%;
+
+  --sidebar-ring: 12 70% 55%;
+
+  --popover: 18 18% 17%;
+
+  --popover-foreground: 41 29% 94%;
+
+  --popover-border: 18 10% 30%;
+
+  --primary: 12 70% 55%;
+
+  --primary-foreground: 18 22% 13%;
+
+  --secondary: 18 18% 23%;
+
+  --secondary-foreground: 41 29% 94%;
+
+  --muted: 18 18% 23%;
+
+  --muted-foreground: 35 15% 66%;
+
+  --accent: 12 70% 55%;
+
+  --accent-foreground: 18 22% 13%;
+
+  --destructive: 0 62% 52%;
+
+  --destructive-foreground: 0 0% 98%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
+  --input: 18 10% 30%;
+  --ring: 12 70% 55%;
+  --chart-1: 12 70% 55%;
+  --chart-2: 83 25% 56%;
+  --chart-3: 35 67% 62%;
+  --chart-4: 41 29% 80%;
+  --chart-5: 18 18% 35%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+:root {
+  --paper: #f0ece2;
+  --ink: #28231f;
+  --clay: #c64f31;
+  --olive: #737a52;
+  --line: #d5cfc2;
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans','IBM Plex Sans Arabic',sans-serif; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.arabic { font-family: 'IBM Plex Sans Arabic','DM Sans',sans-serif; }
+.mono { font-family: 'Space Mono',monospace; letter-spacing: .06em; }
+.page-shell { max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px,5vw,76px); }
+.topline { background: var(--ink); color: #f0ece2; text-align:center; padding: 9px 16px; font-size: 11px; letter-spacing:.12em; }
+.site-header { background: var(--paper); position: sticky; z-index:20; top:0; border-bottom:1px solid var(--line); }
+.nav-inner { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.brand-lockup { display:flex; align-items:center; gap:12px; color:var(--ink); text-decoration:none; flex-shrink:0; }
+.brand-logo { display:block; width:64px; height:64px; object-fit:cover; }
+.brand-copy { display:flex; flex-direction:column; font-size:23px; font-weight:800; letter-spacing:-.09em; line-height:.9; }
+.brand-copy small { font-family:'IBM Plex Sans Arabic'; font-size:12px; font-weight:600; letter-spacing:0; margin-top:6px; }
+.brand-mark { font-size:25px; font-weight:800; letter-spacing:-.09em; line-height:.9; display:flex; flex-direction:column; }
+.brand-mark small { font-family:'IBM Plex Sans Arabic'; font-size:12px; font-weight:600; letter-spacing:0; margin-top:5px; }
+.footer-brand-lockup { display:flex; align-items:center; gap:12px; }
+.footer-logo { width:52px; height:52px; object-fit:cover; }
+.nav-links { display:flex; align-items:center; gap:34px; font-size:13px; }
+.nav-links a { text-decoration:none; color:var(--ink); }
+.nav-actions { display:flex; align-items:center; gap:14px; }
+.icon-button { border:1px solid var(--line); background:transparent; min-height:42px; padding:0 14px; display:flex; align-items:center; gap:9px; color:var(--ink); transition:background .2s,color .2s; }
+.icon-button:hover { background:var(--ink); color:var(--paper); }
+.hero { min-height: min(690px, calc(100svh - 112px)); position:relative; overflow:hidden; background:#45463a; color:#f0ece2; display:flex; align-items:flex-end; }
+.hero-bg { position:absolute; z-index:0; inset:0; overflow:hidden; background:radial-gradient(ellipse at 30% 45%,#3b3a32 0,#26251f 58%,#1d1c19 100%); }
+.hero-logo { position:absolute; left:clamp(24px,7vw,105px); top:50%; width:min(43vw,580px); height:auto; transform:translateY(-50%); mix-blend-mode:screen; object-fit:contain; }
+.hero:after { content:''; position:absolute; z-index:1; inset:0; background:linear-gradient(0deg,rgba(22,23,19,.48),transparent 56%); pointer-events:none; }
+.hero-content { position:relative; z-index:2; padding:clamp(35px,7vw,94px); max-width:850px; }
+.eyebrow { font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--clay); font-weight:700; }
+.hero .eyebrow { color:#edaa8d; }
+.hero h1 { font-size:clamp(52px,9vw,122px); line-height:.92; letter-spacing:-.08em; margin:18px 0 24px; max-width:780px; }
+.hero h1 span { color:#e47755; }
+.hero p { max-width:440px; font-size:17px; line-height:1.9; margin:0 0 30px; }
+.button-primary { border:0; background:var(--clay); color:#fff7eb; padding:15px 22px; display:inline-flex; align-items:center; gap:18px; font-size:13px; font-weight:700; transition:transform .2s,background .2s; text-decoration:none; }
+.button-primary:hover { transform:translateY(-2px); background:#a94028; }
+.button-outline { background:transparent; border:1px solid currentColor; color:inherit; padding:12px 18px; font-weight:600; }
+.marquee { overflow:hidden; white-space:nowrap; background:var(--clay); color:#f8eee0; padding:13px 0; font-size:12px; font-weight:700; letter-spacing:.12em; }
+.marquee-track { display:inline-flex; gap:42px; animation:marquee 28s linear infinite; }
+@keyframes marquee { to { transform:translateX(-50%); } }
+.section { padding:clamp(60px,8vw,108px) 0; }
+.section-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:32px; }
+.section-heading h2 { margin:8px 0 0; font-size:clamp(34px,5vw,58px); line-height:1.05; letter-spacing:-.06em; }
+.section-heading p { color:#726b5f; max-width:330px; line-height:1.8; margin:0; }
+.shop-tools { display:flex; flex-wrap:wrap; gap:9px; align-items:center; justify-content:space-between; margin:0 0 22px; }
+.filters { display:flex; gap:8px; flex-wrap:wrap; }
+.filter-chip { border:1px solid var(--line); background:transparent; color:var(--ink); padding:10px 15px; font-size:12px; transition:all .2s; }
+.filter-chip.active,.filter-chip:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.search-box { border-bottom:1px solid #9c9588; display:flex; align-items:center; gap:9px; padding:7px 4px; }
+.search-box input { width:180px; border:0; outline:0; background:transparent; color:var(--ink); font-size:13px; }
+.product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+.product-card { min-width:0; }
+.product-visual { height:clamp(220px,30vw,380px); overflow:hidden; position:relative; background:var(--product-color,#ddd7ca); }
+.product-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+.product-card:hover .product-photo { transform:scale(1.04); }
+.product-color-picker { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:7px 9px; margin-top:12px; min-width:0; }
+.color-picker-label,.selected-color-name { color:#6e675b; font-size:11px; line-height:1.4; }
+.color-swatches { display:flex; align-items:center; gap:8px; min-width:0; max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:inline proximity; scrollbar-width:none; padding:4px; -webkit-overflow-scrolling:touch; }
+.color-swatches::-webkit-scrollbar { display:none; }
+.color-swatch { width:30px; height:30px; flex:0 0 30px; border:2px solid var(--paper); border-radius:50%; background:var(--swatch-color); box-shadow:0 0 0 1px var(--line); cursor:pointer; scroll-snap-align:center; touch-action:manipulation; transition:transform .2s ease,box-shadow .2s ease; animation:color-swatch-in .36s ease both; animation-delay:calc(var(--swatch-order,0)*60ms); }
+.color-swatch[aria-pressed="true"] { box-shadow:0 0 0 2px var(--ink); transform:scale(1.08); }
+.color-swatch:focus-visible { outline:2px solid var(--clay); outline-offset:3px; }
+.selected-color-name { grid-column:2; }
+.product-photo { animation:color-image-in .34s ease both; }
+@keyframes color-swatch-in { from { opacity:0; } to { opacity:1; } }
+@keyframes color-image-in { from { opacity:.55; } to { opacity:1; } }
+.product-tag { position:absolute; z-index:2; top:12px; left:12px; font-size:10px; background:var(--paper); padding:7px 9px; letter-spacing:.07em; }
+.product-add { position:absolute; z-index:3; bottom:12px; left:12px; right:12px; border:0; padding:12px 10px; background:var(--paper); color:var(--ink); font-weight:700; opacity:0; transform:translateY(6px); transition:opacity .2s,transform .2s; }
+.product-card:hover .product-add,.product-add:focus-visible { opacity:1; transform:translateY(0); }
+.product-info { padding:14px 2px 4px; display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.product-info h3 { margin:0 0 5px; font-size:14px; }
+.product-info p { margin:0; font-size:11px; color:#766f63; }
+.price { white-space:nowrap; font-size:13px; font-weight:700; }
+.story-band { background:#d5d2bd; padding:clamp(48px,8vw,100px) 0; }
+.story-grid { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:clamp(32px,8vw,110px); }
+.story-stamp { min-height:390px; background:#767a5a; color:#f5efe3; position:relative; padding:40px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
+.story-stamp:before { content:'F'; font-size:370px; font-weight:800; line-height:.75; letter-spacing:-.14em; position:absolute; bottom:-45px; right:10px; color:rgba(236,227,205,.12); }
+.story-stamp strong { font-size:clamp(48px,8vw,88px); line-height:.9; letter-spacing:-.08em; position:relative; z-index:1; }
+.story-copy h2 { font-size:clamp(36px,5vw,64px); letter-spacing:-.07em; line-height:1; margin:14px 0 22px; }
+.story-copy p { max-width:500px; line-height:1.95; color:#5e5a4e; }
+.story-copy .button-primary { margin-top:14px; }
+.benefits { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.benefit { padding:25px 20px; border-inline-end:1px solid var(--line); }
+.benefit:last-child { border:0; }
+.benefit b { font-size:13px; display:block; margin-bottom:7px; }
+.benefit span { color:#716b60; font-size:12px; line-height:1.7; }
+.newsletter { background:#29241f; color:#f1eadb; padding:clamp(54px,8vw,90px) 0; }
+.newsletter-row { display:flex; align-items:center; justify-content:space-between; gap:35px; }
+.newsletter h2 { font-size:clamp(34px,5vw,56px); letter-spacing:-.06em; margin:8px 0; }
+.newsletter p { color:#c4bdae; margin:0; }
+.newsletter-form { display:flex; border-bottom:1px solid #8e887c; min-width:min(100%,390px); }
+.newsletter-form input { flex:1; min-width:0; background:transparent; border:0; outline:0; padding:12px 4px; color:#f1eadb; }
+.newsletter-form button { border:0; color:#f1eadb; background:transparent; padding:0 12px; font-weight:700; }
+.footer { background:#29241f; color:#f1eadb; border-top:1px solid #524b42; padding:26px 0; }
+.footer-row { display:flex; justify-content:space-between; align-items:center; gap:20px; color:#c4bdae; font-size:11px; }
+.cart-overlay { position:fixed; z-index:50; inset:0; background:rgba(25,22,19,.52); display:flex; justify-content:flex-end; }
+.cart-panel { width:min(100%,460px); background:var(--paper); height:100%; padding:25px; display:flex; flex-direction:column; animation:slide-in .24s ease-out; }
+@keyframes slide-in { from { transform:translateX(24px); opacity:.7; } to { transform:translateX(0); opacity:1; } }
+.cart-header { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:16px; }
+.cart-header h2 { margin:0; font-size:24px; }
+.cart-items { flex:1; overflow:auto; padding:8px 0; }
+.cart-line { display:grid; grid-template-columns:68px 1fr auto; gap:13px; padding:17px 0; border-bottom:1px solid var(--line); align-items:center; }
+.cart-swatch { height:70px; background:var(--product-color); position:relative; }
+.cart-swatch:after { content:'F'; position:absolute; inset:0; display:grid; place-items:center; color:rgba(255,255,255,.8); font-weight:800; }
+.cart-line h3 { font-size:13px; margin:0 0 4px; }
+.cart-line p { margin:0; font-size:11px; color:#70695d; }
+.qty-control { display:flex; border:1px solid var(--line); width:max-content; align-items:center; margin-top:10px; }
+.qty-control button { background:none; border:0; width:28px; height:28px; }
+.qty-control span { min-width:24px; text-align:center; font-size:12px; }
+.cart-bottom { border-top:1px solid var(--line); padding-top:18px; }
+.cart-total { display:flex; justify-content:space-between; font-weight:700; margin:0 0 15px; }
+.checkout-button { width:100%; justify-content:center; }
+.checkout-note { font-size:11px; text-align:center; color:#6e675b; line-height:1.7; margin:12px 0 0; }
+.empty-cart { margin:auto; text-align:center; padding:35px; }
+.checkout-alert { position:fixed; z-index:70; inset:0; background:rgba(25,22,19,.58); display:grid; place-items:center; padding:20px; }
+.alert-card { background:var(--paper); max-width:440px; width:100%; padding:30px; border-top:5px solid var(--clay); }
+.alert-card h2 { margin:10px 0; font-size:26px; }
+.alert-card p { color:#686155; line-height:1.8; }
+.alert-card button { margin-top:10px; }
+.toast { position:fixed; z-index:80; bottom:24px; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--paper); padding:12px 18px; font-size:13px; box-shadow:0 8px 24px #2a241f33; }
+@media (max-width:850px) {
+  .nav-links { gap:16px; }
+  .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .story-grid { grid-template-columns:1fr; }
+  .story-stamp { min-height:300px; }
+}
+@media (max-width:600px) {
+  html, body, #root { width:100%; max-width:100%; }
+  body { overflow-x:hidden; }
+  .page-shell { width:calc(100% - 32px); }
+  .nav-inner { min-height:66px; }
+  .brand-logo { width:54px; height:54px; }
+  .brand-copy { font-size:20px; }
+  .nav-links { display:none; }
+  .icon-button .cart-word { display:none; }
+  .hero { min-height:650px; }
+  .hero-logo { left:50%; top:22px; width:min(62vw,240px); transform:translateX(-50%); opacity:.9; }
+  .hero-content { padding:28px 22px 45px; }
+  .hero h1 { font-size:clamp(44px,14vw,58px); }
+  .hero p { font-size:15px; }
+  .section-heading { display:block; }
+  .section-heading p { margin-top:14px; }
+  .shop-tools { align-items:stretch; }
+  .search-box { width:100%; }
+  .search-box input { flex:1; }
+  .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px 10px; }
+  .product-card,.product-info,.product-title { min-width:0; }
+  .product-visual { height:auto; min-height:0; aspect-ratio:3/4; }
+  .product-add { opacity:1; transform:none; bottom:8px; left:8px; right:8px; padding:9px; font-size:11px; }
+  .product-info { display:block; }
+  .price { display:block; margin-top:7px; }
+  .product-color-picker { gap:6px 7px; margin-top:9px; }
+  .color-swatches { gap:6px; }
+  .color-swatch { width:28px; height:28px; flex-basis:28px; }
+  .benefits { grid-template-columns:1fr; }
+  .benefit { border-inline-end:0; border-bottom:1px solid var(--line); }
+  .newsletter-row { display:block; }
+  .newsletter-form { margin-top:28px; }
+  .footer-row { flex-direction:column; align-items:flex-start; }
+  .footer-logo { width:46px; height:46px; }
+  .cart-panel { padding:calc(18px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom)); }
+}
+@media (max-width:380px) {
+  .page-shell { width:calc(100% - 28px); }
+  .hero-content { padding-inline:18px; }
+  .product-grid { gap:13px 8px; }
+  .product-color-picker { grid-template-columns:1fr; gap:4px; }
+  .selected-color-name { grid-column:1; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*:before,*:after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
+
+.account-link { text-decoration:none; }
+.product-title { min-width:0; }
+.size-picker { display:flex; align-items:center; gap:8px; margin-top:10px; font-size:11px; color:#726b5f; }
+.size-picker select { min-width:72px; max-width:100%; background:transparent; border:1px solid var(--line); color:var(--ink); padding:6px 8px; font-size:11px; }
+.single-size { display:inline-block; margin-top:10px; font-size:11px; color:#726b5f; }
+.product-add:disabled,.checkout-button:disabled,.qty-control button:disabled { cursor:not-allowed; opacity:.5; }
+.product-sold-out { right:12px; left:auto; }
+.product-image-placeholder { position:absolute; inset:0; display:grid; place-items:center; color:#f4eee3; font:700 46px 'Space Mono',monospace; letter-spacing:.08em; }
+.catalog-message { min-height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; color:#726b5f; }
+.checkout-error { margin:0 0 12px; color:#a82e2e; font-size:12px; line-height:1.6; }
+.cart-swatch { width:68px; object-fit:cover; }
+
+.auth-page { min-height:100svh; background:var(--paper); color:var(--ink); }
+.auth-header { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); }
+.auth-brand .brand-logo { object-fit:cover; }
+.auth-back { display:inline-flex; align-items:center; gap:8px; text-decoration:none; }
+.auth-content { min-height:calc(100svh - 83px); display:grid; grid-template-columns:minmax(0,1fr) minmax(340px,440px); align-items:center; gap:clamp(36px,8vw,120px); padding-block:48px; }
+.auth-intro { max-width:620px; }
+.auth-intro h1 { margin:14px 0; font-size:clamp(40px,6vw,76px); line-height:1; letter-spacing:-.07em; }
+.auth-intro p,.auth-phone-note { color:#6e675b; line-height:1.9; }
+.auth-form-card,.account-card { background:#f8f5ed; border:1px solid var(--line); padding:28px; }
+.auth-phone-note { grid-column:1/-1; margin:-20px 0 0; text-align:center; font-size:12px; }
+.auth-loading { min-height:160px; display:grid; place-items:center; color:#6e675b; }
+.account-user { display:flex; align-items:center; gap:12px; padding-bottom:20px; border-bottom:1px solid var(--line); }
+.account-avatar { width:42px; height:42px; display:grid; place-items:center; color:var(--clay); border:1px solid var(--line); }
+.account-user b,.account-user span { display:block; }
+.account-user span { margin-top:4px; font-size:12px; color:#6e675b; }
+.contact-form { display:flex; flex-direction:column; gap:9px; padding-block:22px; }
+.contact-form label { font-size:13px; font-weight:700; }
+.contact-form input { border:1px solid var(--line); background:#fff; color:var(--ink); padding:12px; }
+.contact-form small { color:#6e675b; font-size:11px; line-height:1.7; }
+.contact-form .button-primary { align-self:flex-start; margin-top:8px; }
+.contact-form .button-primary:disabled { opacity:.6; cursor:wait; }
+.account-status { margin:2px 0 0; color:#4f6a52; font-size:12px; }
+.account-signout { display:inline-flex; align-items:center; gap:9px; }
+
+@media (max-width:600px) {
+  .nav-actions { gap:6px; }
+  .nav-actions .icon-button { padding:0 10px; }
+  .nav-actions .icon-button span { display:none; }
+  .auth-header { min-height:70px; }
+  .auth-brand .brand-logo { width:48px; height:48px; }
+  .auth-content { min-height:auto; display:flex; flex-direction:column; align-items:stretch; gap:20px; padding-block:34px 44px; }
+  .auth-intro h1 { font-size:44px; }
+  .auth-form-card,.account-card { padding:20px; }
+  .auth-phone-note { margin:0; }
+}

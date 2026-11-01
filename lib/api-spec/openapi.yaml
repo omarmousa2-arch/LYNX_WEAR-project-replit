@@ -1,0 +1,196 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: shopify
+    description: Shopify storefront and hosted checkout
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /shopify/products:
+    get:
+      operationId: listShopifyProducts
+      tags: [shopify]
+      summary: List published Shopify products
+      responses:
+        "200":
+          description: Published products available in the storefront
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ShopifyProduct"
+        "502":
+          description: Shopify storefront request failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+  /shopify/checkout:
+    post:
+      operationId: createShopifyCheckout
+      tags: [shopify]
+      summary: Create a Shopify-hosted checkout for cart lines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShopifyCheckoutInput"
+      responses:
+        "200":
+          description: Shopify checkout URL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShopifyCheckoutResponse"
+        "400":
+          description: Invalid cart lines
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "502":
+          description: Shopify checkout request failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+      required: [error]
+    ShopifyProductOption:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      required: [name, value]
+    ShopifyProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        price:
+          type: number
+        currencyCode:
+          type: string
+        availableForSale:
+          type: boolean
+        quantityAvailable:
+          type: integer
+          minimum: 0
+        selectedOptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShopifyProductOption"
+      required:
+        - id
+        - title
+        - price
+        - currencyCode
+        - availableForSale
+        - quantityAvailable
+        - selectedOptions
+    ShopifyProduct:
+      type: object
+      properties:
+        id:
+          type: string
+        handle:
+          type: string
+        title:
+          type: string
+        productType:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: ["string", "null"]
+          format: uri
+        price:
+          type: number
+        currencyCode:
+          type: string
+        variants:
+          type: array
+          items:
+            $ref: "#/components/schemas/ShopifyProductVariant"
+      required:
+        - id
+        - handle
+        - title
+        - productType
+        - description
+        - imageUrl
+        - price
+        - currencyCode
+        - variants
+    ShopifyCheckoutLine:
+      type: object
+      properties:
+        variantId:
+          type: string
+          minLength: 1
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 99
+        color:
+          type: string
+          minLength: 1
+          maxLength: 32
+      required: [variantId, quantity]
+    ShopifyCheckoutInput:
+      type: object
+      properties:
+        lines:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: "#/components/schemas/ShopifyCheckoutLine"
+      required: [lines]
+    ShopifyCheckoutResponse:
+      type: object
+      properties:
+        checkoutUrl:
+          type: string
+          format: uri
+      required: [checkoutUrl]
+

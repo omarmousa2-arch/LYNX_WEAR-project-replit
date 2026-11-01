@@ -1,0 +1,98 @@
+[
+  {
+    "id": "eab00435-f9bf-40b1-ba24-a4ddd02b7826",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide1.tsx",
+    "title": "LYNX WEAR",
+    "description": "LYNX WEAR",
+    "speakerNotes": ""
+  },
+  {
+    "id": "39bd0ecd-7548-46db-9010-adcc798c186d",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide2.tsx",
+    "title": "فكرة المشروع",
+    "description": "فكرة المشروع",
+    "speakerNotes": ""
+  },
+  {
+    "id": "492c8835-8c16-4f60-9273-8a7e9bb89625",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide3.tsx",
+    "title": "لمن صُمّم الموقع؟",
+    "description": "لمن صُمّم الموقع؟",
+    "speakerNotes": ""
+  },
+  {
+    "id": "5d3243ab-3ac5-42d4-b3cc-058c6c41aca8",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide4.tsx",
+    "title": "منتجات تناسب التمرين",
+    "description": "منتجات تناسب التمرين",
+    "speakerNotes": ""
+  },
+  {
+    "id": "bc28f3a6-6288-44a0-875f-0b5f20bb5a98",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide5.tsx",
+    "title": "اختيار اللون والمقاس",
+    "description": "اختيار اللون والمقاس",
+    "speakerNotes": ""
+  },
+  {
+    "id": "c3ba7f28-725c-4f00-b1a7-45136c035f47",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide6.tsx",
+    "title": "تجربة مناسبة للموبايل",
+    "description": "تجربة مناسبة للموبايل",
+    "speakerNotes": ""
+  },
+  {
+    "id": "6b2ae706-ffe0-42cc-9014-eb33dd6d0177",
+    "position": 7,
+    "filepath": "src/pages/slides/Slide7.tsx",
+    "title": "الحساب والتواصل",
+    "description": "الحساب والتواصل",
+    "speakerNotes": ""
+  },
+  {
+    "id": "09e57e33-6556-40d6-9a50-98354eacd4fb",
+    "position": 8,
+    "filepath": "src/pages/slides/Slide8.tsx",
+    "title": "سلة التسوق",
+    "description": "سلة التسوق",
+    "speakerNotes": ""
+  },
+  {
+    "id": "4986668d-2450-41f7-aa40-0b3ed1b3c208",
+    "position": 9,
+    "filepath": "src/pages/slides/Slide9.tsx",
+    "title": "الدفع في النسخة التجريبية",
+    "description": "الدفع في النسخة التجريبية",
+    "speakerNotes": ""
+  },
+  {
+    "id": "3e23e2fb-780c-48fb-9546-68d86fab7de3",
+    "position": 10,
+    "filepath": "src/pages/slides/Slide10.tsx",
+    "title": "التقنيات المستخدمة",
+    "description": "التقنيات المستخدمة",
+    "speakerNotes": ""
+  },
+  {
+    "id": "ce19cd0c-51c0-43e3-887e-f003b870ecac",
+    "position": 11,
+    "filepath": "src/pages/slides/Slide11.tsx",
+    "title": "الخطوات القادمة",
+    "description": "الخطوات القادمة",
+    "speakerNotes": ""
+  },
+  {
+    "id": "25a241c3-1e85-481a-b49f-0f09e7f389cc",
+    "position": 12,
+    "filepath": "src/pages/slides/Slide12.tsx",
+    "title": "شكراً لكم",
+    "description": "شكراً لكم",
+    "speakerNotes": ""
+  }
+]

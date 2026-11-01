@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" role="img" aria-label="Lynx Wear">
+  <rect width="360" height="96" fill="#171715"/>
+  <path d="M28 27 42 13l8 17 13-13 5 23-14 17H35L23 43z" fill="none" stroke="#f4f0e7" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M39 39h5m9 0h5m-12 8 5 2 5-2" fill="none" stroke="#f4f0e7" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="84" y="54" fill="#f4f0e7" font-family="Arial, sans-serif" font-size="34" font-style="italic" font-weight="800" letter-spacing="-1">LYNX</text>
+  <text x="207" y="54" fill="#f4f0e7" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="6">WEAR</text>
+  <text x="87" y="77" fill="#c6c0b4" font-family="Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="4">TRAIN / MOVE / BEYOND</text>
+</svg>
