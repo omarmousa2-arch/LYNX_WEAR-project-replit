@@ -43,7 +43,6 @@ Lynx Wear متجر إلكتروني يضم ملابس التمرين ومستل�
 - `generated-artifacts/lynx-wear/Lynx-Wear-Presentation.pdf`
 - `generated-artifacts/lynx-wear/Lynx-Wear-Presentation.pptx`
 
-النسخ القابلة للتنزيل على GitHub:
+مصدر الشرائح منشور ضمن المستودع. نسختا PDF وPowerPoint جاهزتان في مساحة Replit، لكنهما غير مرفقتين بإصدار GitHub بعد.
 
-- [العرض بصيغة PDF](https://github.com/omarmousa2-arch/LYNX_WEAR-project-replit/releases/download/project-presentation/Lynx-Wear-Presentation.pdf)
-- [العرض بصيغة PowerPoint](https://github.com/omarmousa2-arch/LYNX_WEAR-project-replit/releases/download/project-presentation/Lynx-Wear-Presentation.pptx)
+[صفحة الإصدار على GitHub](https://github.com/omarmousa2-arch/LYNX_WEAR-project-replit/releases/tag/project-presentation)

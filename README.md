@@ -20,13 +20,13 @@
   - `Lynx-Wear-Presentation.pptx`
   - `Lynx-Wear-Presentation.pdf`
 
-## تحميل العرض التقديمي
+## العرض التقديمي
 
-- [تحميل PDF](https://github.com/omarmousa2-arch/LYNX_WEAR-project-replit/releases/download/project-presentation/Lynx-Wear-Presentation.pdf)
-- [تحميل PowerPoint](https://github.com/omarmousa2-arch/LYNX_WEAR-project-replit/releases/download/project-presentation/Lynx-Wear-Presentation.pptx)
 - [صفحة إصدار العرض](https://github.com/omarmousa2-arch/LYNX_WEAR-project-replit/releases/tag/project-presentation)
 
-ملفات التصدير متاحة على GitHub ضمن مرفقات الإصدار، وليست داخل سجل Git حتى لا يزيد حجمه. مصدر العرض وملفاته الأصلية موجودة في مجلد العرض التقديمي. لا تتضمن النسخة المنشورة مفاتيح الخدمات أو ملفات البيئة أو إعدادات الوكيل الداخلية أو مجلدات الاعتماديات.
+مصدر الشرائح الكامل موجود في `artifacts/lynx-wear-presentation/`. نسختا PDF وPowerPoint المصدّرتان جاهزتان في مساحة Replit وفي مجلد الملفات الناتجة المذكور أعلاه، لكنهما **غير مرفقتين بإصدار GitHub بعد**. يمكن إرفاقهما من صفحة تعديل الإصدار، دون إضافتهما إلى سجل Git.
+
+لا تتضمن النسخة المنشورة مفاتيح الخدمات أو ملفات البيئة أو إعدادات الوكيل الداخلية أو مجلدات الاعتماديات.
 
 ## تشغيل المتجر
 
